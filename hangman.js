@@ -27,6 +27,7 @@ var hangmanGame = function(){
 
 	askLetter(currentWord, gameStats);
 	playGame = false;
+
 }
 
 var askLetter = function(currentWord, gameStats){
@@ -38,12 +39,27 @@ var askLetter = function(currentWord, gameStats){
 		}
 	]).then(function(response){
 		// console.log(response.letter);
-		currentWord.letterGuess(response.letter);
+		currentWord.lettersGuessedCheck(response.letter);
+
+		if (currentWord.lettersGuessed){
+			console.log("\n Letter already guessed, try again!\n");
+			askLetter(currentWord, gameStats);
+			return;
+
+		} else {
+			currentWord.letterGuess(response.letter);
+		}
+		
 
 		if (!currentWord.letterGuessBool){
 			gameStats.wrongGuess();
-			console.log("Guesses remaining: ".red)
-			console.log(gameStats.guessesRemaining);
+			console.log("\n WRONG LETTER!!\n".red)
+			console.log(gameStats.guessesRemaining + " guesses remaining.".red);
+			if (gameStats.guessesRemaining === 0){
+				console.log("\nYou Lose!\n".red);
+				askEndGame();
+				return
+			}
 		} else {
 			console.log("\n CORRECT!".green);
 			currentWord.letterGuessBool = false;
@@ -77,5 +93,7 @@ var askEndGame = function(){
 		}
 	})
 }
+
+
 startHangman();
 
