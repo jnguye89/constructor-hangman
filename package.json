@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jnguye89/constructor-hangman#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "inquirer": "^4.0.1"
   }
 }
