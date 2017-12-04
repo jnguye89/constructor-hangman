@@ -1,35 +1,34 @@
 var CurrentWord = function(wordArray){
-	//sets the key value to the passed in word
 	this.wordArray = wordArray;
-	//creates a blank array to hold the _
-	this.wordBlankArray = [];
-	this.wordBlankDisplay = "";
-
-	//creates function to push _ to the blank array
-	this.wordBlank = function(){
+	this.wordArrayBlanks = [];
+	this.wordDisplay = "";
+	this.letterGuessBool = false;
+	this.getBlankArray = function(){
 		for (i = 0; i < this.wordArray.length; i++){
 			if (this.wordArray[i] === " "){
-				this.wordBlankArray.push(" ");
+				this.wordArrayBlanks.push(" ");
 			} else {
-				this.wordBlankArray.push("_")
+				this.wordArrayBlanks.push("_");
 			}
 		}
-		return this.wordBlankArray;
 	}
-	this.wordBlankDisplayF = function(){
-		for (i = 0; i < this.wordBlankArray.length; i++){
-			this.wordBlankDisplay = this.wordBlankDisplay + this.wordBlankArray[i] + " ";
+	this.displayWordFormat = function(){
+		this.wordDisplay = "";
+		for (i = 0; i < this.wordArrayBlanks.length; i++){
+			this.wordDisplay = this.wordDisplay + this.wordArrayBlanks[i] + " ";
 		}
-		return this.wordBlankDisplay;
 	}
-};
-
-CurrentWord.prototype.wordBlankDisplayF = function(){
-	for (i = 0; i < this.wordBlankArray.length; i++){
-		this.wordBlankDisplay = this.wordBlankDisplay + this.wordBlankArray[i] + " ";
+	this.letterGuess = function(letter){
+		for (i = 0; i < this.wordArrayBlanks.length; i++){
+			if (letter === this.wordArray[i]){
+				this.wordArrayBlanks[i] = letter;
+				this.letterGuessBool = true;
+			}
+		}
 	}
-	return this.wordBlankDisplay;
+	this.displayWord = function(){
+		console.log("\n" + this.wordDisplay + "\n");
+	}
 }
-
 
 module.exports = CurrentWord;
