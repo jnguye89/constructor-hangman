@@ -15,7 +15,7 @@ var hangmanGame = function(){
 	console.log("GAME START, PLEASE ENTER A LETTER TO BEGIN!");
 
 	var newWord = new RandomWord();
-	console.log(newWord.wordGuess);
+	// console.log(newWord.wordGuess);
 
 	var gameStats = new GameStats;
 

@@ -51,15 +51,15 @@ var CurrentWord = function(wordArray){
 			} 
 		}
 	}
-	this.lettersGuessedCheck = function(letter){
-		this.lettersGuessed = false;
-		for (i = 0; i < this.lettersGuessedArray.length; i++){
-			if (this.lettersGuessedArray[i] === letter){
-				this.lettersGuessed = true;
+}
 
-			}
+CurrentWord.prototype.lettersGuessedCheck = function(letter){
+	this.lettersGuessed = false;
+	for (i = 0; i < this.lettersGuessedArray.length; i++){
+		if (this.lettersGuessedArray[i] === letter){
+			this.lettersGuessed = true;
+
 		}
-
 	}
 }
 
