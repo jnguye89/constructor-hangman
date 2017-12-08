@@ -72,7 +72,9 @@ var askLetter = function(currentWord, gameStats){
 		if (!currentWord.wordCompleteBool){
 			askLetter(currentWord, gameStats);
 		} else {
+			console.log("YOU WON!! CONGRATS".green);
 			askEndGame();
+
 		}
 
 	})
